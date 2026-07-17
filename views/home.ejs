@@ -1,0 +1,26 @@
+<%- include("partials/header.ejs") %>
+
+<div class="buttons">
+    <a href="/compose"><button>+ Compose New Post</button></a>
+    <a href="/about"><button>About</button></a>
+    <a href="/contact"><button>Contact</button></a>
+</div>
+
+<% if (posts.length > 0) { %>
+  <div class="posts-grid">
+    <% posts.forEach(post => { %>
+      <article class="post-card">
+        <h2><%= post.title %></h2>
+        <p><%= post.content.length > 150 ? post.content.substring(0, 150) + '...' : post.content %></p>
+        <a href="/edit/<%= post.id %>" class="read-more">Read / Edit Post →</a>
+      </article>
+    <% }) %>
+  </div>
+<% } else { %>
+  <div class="page-content" style="text-align: center;">
+    <h1>Welcome to your Blog!</h1>
+    <p>You don't have any posts yet. Click "Compose" to create your first one.</p>
+  </div>
+<% } %>
+
+<%- include("partials/footer.ejs") %>

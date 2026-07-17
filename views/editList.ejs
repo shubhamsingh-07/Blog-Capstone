@@ -1,0 +1,24 @@
+<%- include("partials/header.ejs") %>
+
+<div class="page-content">
+  <h1>Edit Your Posts</h1>
+  
+  <% if (posts.length > 0) { %>
+    <div class="edit-list-grid">
+      <% posts.forEach(post => { %>
+        <a href="/edit/<%= post.id %>" class="edit-list-item">
+          <span class="post-id">#<%= post.id + 1 %></span>
+          <span class="post-title"><%= post.title %></span>
+          <span class="edit-icon">✎</span>
+        </a>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <div class="empty-state">
+      <p>You don't have any posts to edit yet!</p>
+      <a href="/create"><button>Create Your First Post</button></a>
+    </div>
+  <% } %>
+</div>
+
+<%- include("partials/footer.ejs") %>
